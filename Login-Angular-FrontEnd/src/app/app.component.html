@@ -1,0 +1,44 @@
+<div class="sidenav">
+  <div class="login-main-text">
+     <h2>Application<br> Login Page</h2>
+     <p>Login or register from here to access.</p>
+  </div>
+</div>
+<div class="container">
+  <div class="main">
+    <div class="col-md-6 col-sm-12">
+       <div class="login-form">
+          <form #loginform="ngForm" (ngSubmit)="onSubmit(loginform)">
+             <div class="form-group">
+                <label>User Name</label>
+                <input type="text" class="form-control" name="username" #username="ngModel" ngModel
+                id="username" placeholder="User Name" required>
+                <small class="form-text form-muted" *ngIf="username.touched && !username.valid">Enter username</small>
+             </div>
+             <div class="form-group">
+                <label>Password</label>
+                <input type="password" class="form-control" name="password" #password="ngModel" ngModel 
+                id="password" placeholder="Password" (change)=onChange($event) required> 
+                <small class="form-text form-muted" *ngIf="password.touched && !password.valid">Enter password</small>
+             </div>
+             <button type="submit" class="btn btn-black" [disabled]="!loginform.valid">Login</button>
+             <button type="submit" class="btn btn-black">Register</button>
+          </form>
+       </div>
+    </div>
+    <div id=“message” *ngIf="showError">
+
+      <h3>Password must contain the following:</h3>
+
+      <p class=“invalid”>A <b>lowercase</b> letter</p>
+
+      <p class=“invalid”>A <b>capital (uppercase)</b> letter</p>
+
+      <p  class=“invalid”>A <b>number</b></p>
+
+      <p  class=“invalid”>Minimum <b>8 characters</b></p>
+
+    </div>
+    <p *ngIf="showMessage">{{result}}</p>
+  </div>
+</div>
