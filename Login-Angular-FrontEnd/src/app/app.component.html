@@ -21,7 +21,7 @@
                 id="password" placeholder="Password" (change)=onChange($event) required> 
                 <small class="form-text form-muted" *ngIf="password.touched && !password.valid">Enter password</small>
              </div>
-             <button type="submit" class="btn btn-black" [disabled]="!loginform.valid">Login</button>
+             <button type="submit" class="btn btn-black" [disabled]="!loginform.valid || showError">Login</button>
              <button type="submit" class="btn btn-black">Register</button>
           </form>
        </div>
@@ -39,6 +39,6 @@
       <p  class=“invalid”>Minimum <b>8 characters</b></p>
 
     </div>
-    <p *ngIf="showMessage">{{result}}</p>
+    <p *ngIf="loginform.valid && showMessage">{{result}}</p>
   </div>
 </div>
