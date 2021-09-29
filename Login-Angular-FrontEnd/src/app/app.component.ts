@@ -36,12 +36,11 @@ export class AppComponent {
     var pattern = new RegExp(
       "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)"
     );
-    if(password.length<8){
+    if(password.length<8 || !pattern.test(password)){
       this.showError=true;
     }else{
-      if(pattern.test(password)){
       this.showError=false;
-      }
+      
     }
     
   }
